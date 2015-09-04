@@ -1,15 +1,15 @@
-%define         kdeframever     5.10
-%define         qtver           5.3.2
-%define         kfname          kdesignerplugin
+%define		kdeframever	5.13
+%define		qtver		5.3.2
+%define		kfname		kdesignerplugin
 
 Summary:	Framework for managing menu and toolbar actions
 Name:		kf5-%{kfname}
-Version:	5.10.0
-Release:	0.1
+Version:	5.13.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	a0ea29cd41dde032e34a6778a8ec5c43
+# Source0-md5:	8ac6b08151029fc148473325c90c8b4d
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.2.0
 BuildRequires:	Qt5DBus-devel >= 5.2.0
@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build/ install \
         DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{kfname}5_qt --with-qm
+#%find_lang %{kfname}5_qt --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -106,7 +106,8 @@ rm -rf $RPM_BUILD_ROOT
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{kfname}5_qt.lang
+%files
+# -f %{kfname}5_qt.lang
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %{_bindir}/kgendesignerplugin
