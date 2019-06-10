@@ -1,15 +1,15 @@
-%define		kdeframever	5.56
+%define		kdeframever	5.59
 %define		qtver		5.9.0
 %define		kfname		kdesignerplugin
 
 Summary:	Framework for managing menu and toolbar actions
 Name:		kf5-%{kfname}
-Version:	5.56.0
+Version:	5.59.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	9f7a117b0a32e0afe7b8516ad4fc4a5e
+# Source0-md5:	9330b5945822da085cfb9bdc21a7821c
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.2.0
 BuildRequires:	Qt5DBus-devel >= 5.2.0
@@ -144,6 +144,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kf5/widgets/pics/kurllabel.png
 %{_datadir}/kf5/widgets/pics/kurlrequester.png
 %{_mandir}/man1/kgendesignerplugin.1*
+%lang(ca) %{_mandir}/ca/man1/kgendesignerplugin.1*
+%lang(de) %{_mandir}/de/man1/kgendesignerplugin.1*
+%lang(it) %{_mandir}/it/man1/kgendesignerplugin.1*
+%lang(nl) %{_mandir}/nl/man1/kgendesignerplugin.1*
+%lang(pt) %{_mandir}/pt/man1/kgendesignerplugin.1*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/kgendesignerplugin.1*
+%lang(sv) %{_mandir}/sv/man1/kgendesignerplugin.1*
+%lang(uk) %{_mandir}/uk/man1/kgendesignerplugin.1*
 
 %files devel
 %defattr(644,root,root,755)
