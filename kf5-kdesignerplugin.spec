@@ -1,15 +1,15 @@
-%define		kdeframever	5.59
+%define		kdeframever	5.61
 %define		qtver		5.9.0
 %define		kfname		kdesignerplugin
 
 Summary:	Framework for managing menu and toolbar actions
 Name:		kf5-%{kfname}
-Version:	5.59.0
+Version:	5.61.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	9330b5945822da085cfb9bdc21a7821c
+# Source0-md5:	cea06789eb647b75c92f4b6a2f4016ba
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.2.0
 BuildRequires:	Qt5DBus-devel >= 5.2.0
@@ -36,7 +36,7 @@ BuildRequires:	kf5-kconfig-devel >= %{version}
 BuildRequires:	kf5-kconfigwidgets-devel >= %{version}
 BuildRequires:	kf5-kcoreaddons-devel >= %{version}
 BuildRequires:	kf5-kdbusaddons-devel >= %{version}
-BuildRequires:	kf5-kdewebkit-devel >= %{version}
+BuildRequires:	kf5-kdewebkit-devel >= 5.59.0
 BuildRequires:	kf5-kdoctools-devel >= %{version}
 BuildRequires:	kf5-kglobalaccel-devel >= %{version}
 BuildRequires:	kf5-kguiaddons-devel >= %{version}
@@ -111,7 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %{_bindir}/kgendesignerplugin
-%attr(755,root,root) %{_libdir}/qt5/plugins/designer/kdewebkit5widgets.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/kf5widgets.so
 %{_datadir}/kf5/widgets/pics/k3iconview.png
 %{_datadir}/kf5/widgets/pics/k3listview.png
@@ -143,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kf5/widgets/pics/kurlcomborequester.png
 %{_datadir}/kf5/widgets/pics/kurllabel.png
 %{_datadir}/kf5/widgets/pics/kurlrequester.png
+%{_datadir}/kf5/widgets/pics/kbusyindicatorwidget.png
 %{_mandir}/man1/kgendesignerplugin.1*
 %lang(ca) %{_mandir}/ca/man1/kgendesignerplugin.1*
 %lang(de) %{_mandir}/de/man1/kgendesignerplugin.1*
