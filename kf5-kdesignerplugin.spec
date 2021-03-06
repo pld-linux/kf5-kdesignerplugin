@@ -1,15 +1,15 @@
-%define		kdeframever	5.61
+%define		kdeframever	5.79
 %define		qtver		5.9.0
 %define		kfname		kdesignerplugin
 
 Summary:	Framework for managing menu and toolbar actions
 Name:		kf5-%{kfname}
-Version:	5.61.0
+Version:	5.79.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	cea06789eb647b75c92f4b6a2f4016ba
+Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/portingAids/%{kfname}-%{version}.tar.xz
+# Source0-md5:	d23f9c74b3dc20f15c86e88723e2de00
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.2.0
 BuildRequires:	Qt5DBus-devel >= 5.2.0
@@ -56,6 +56,7 @@ BuildRequires:	kf5-sonnet-devel >= %{version}
 BuildRequires:	qt5-linguist
 
 BuildRequires:	cmake >= 2.8.12
+BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -88,16 +89,14 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 %build
 install -d build
 cd build
-%cmake \
+%cmake -G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	../
-%{__make}
+%ninja_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} -C build/ install \
-        DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{kfname}5_qt --all-name --with-qm
 
@@ -111,38 +110,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %{_bindir}/kgendesignerplugin
-%attr(755,root,root) %{_libdir}/qt5/plugins/designer/kf5widgets.so
-%{_datadir}/kf5/widgets/pics/k3iconview.png
-%{_datadir}/kf5/widgets/pics/k3listview.png
-%{_datadir}/kf5/widgets/pics/kactionselector.png
-%{_datadir}/kf5/widgets/pics/kactivelabel.png
-%{_datadir}/kf5/widgets/pics/kcharselect.png
-%{_datadir}/kf5/widgets/pics/kcmodule.png
-%{_datadir}/kf5/widgets/pics/kcolorbutton.png
-%{_datadir}/kf5/widgets/pics/kcolorcombo.png
-%{_datadir}/kf5/widgets/pics/kcombobox.png
-%{_datadir}/kf5/widgets/pics/kdatepicker.png
-%{_datadir}/kf5/widgets/pics/kdatetable.png
-%{_datadir}/kf5/widgets/pics/kdualcolorbutton.png
-%{_datadir}/kf5/widgets/pics/kfontcombo.png
-%{_datadir}/kf5/widgets/pics/kfontrequester.png
-%{_datadir}/kf5/widgets/pics/kgradientselector.png
-%{_datadir}/kf5/widgets/pics/khistorycombo.png
-%{_datadir}/kf5/widgets/pics/khsselector.png
-%{_datadir}/kf5/widgets/pics/kiconbutton.png
-%{_datadir}/kf5/widgets/pics/kkeybutton.png
-%{_datadir}/kf5/widgets/pics/kled.png
-%{_datadir}/kf5/widgets/pics/klineedit.png
-%{_datadir}/kf5/widgets/pics/klistbox.png
-%{_datadir}/kf5/widgets/pics/kpalettetable.png
-%{_datadir}/kf5/widgets/pics/kpasswordedit.png
-%{_datadir}/kf5/widgets/pics/kruler.png
-%{_datadir}/kf5/widgets/pics/ksqueezedtextlabel.png
-%{_datadir}/kf5/widgets/pics/ktextedit.png
-%{_datadir}/kf5/widgets/pics/kurlcomborequester.png
-%{_datadir}/kf5/widgets/pics/kurllabel.png
-%{_datadir}/kf5/widgets/pics/kurlrequester.png
-%{_datadir}/kf5/widgets/pics/kbusyindicatorwidget.png
 %{_mandir}/man1/kgendesignerplugin.1*
 %lang(ca) %{_mandir}/ca/man1/kgendesignerplugin.1*
 %lang(de) %{_mandir}/de/man1/kgendesignerplugin.1*
@@ -152,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pt_BR) %{_mandir}/pt_BR/man1/kgendesignerplugin.1*
 %lang(sv) %{_mandir}/sv/man1/kgendesignerplugin.1*
 %lang(uk) %{_mandir}/uk/man1/kgendesignerplugin.1*
+%lang(es) %{_mandir}/es/man1/kgendesignerplugin.1.*
 
 %files devel
 %defattr(644,root,root,755)
