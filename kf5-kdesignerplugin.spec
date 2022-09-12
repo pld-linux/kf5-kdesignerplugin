@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.97
+%define		kdeframever	5.98
 %define		qtver		5.15.2
 %define		kfname		kdesignerplugin
 
 Summary:	Framework for managing menu and toolbar actions
 Name:		kf5-%{kfname}
-Version:	5.97.0
-Release:	2
+Version:	5.98.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/portingAids/%{kfname}-%{version}.tar.xz
-# Source0-md5:	ce4f59beb52eea5b5b859fca12efa0f7
+# Source0-md5:	53c1f16b7b1a0144f629f841d12b51e5
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.2.0
 BuildRequires:	Qt5DBus-devel >= 5.2.0
