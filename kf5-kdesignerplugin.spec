@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.99
+%define		kdeframever	5.100
 %define		qtver		5.15.2
 %define		kfname		kdesignerplugin
 
 Summary:	Framework for managing menu and toolbar actions
 Name:		kf5-%{kfname}
-Version:	5.99.0
-Release:	3
+Version:	5.100.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/portingAids/%{kfname}-%{version}.tar.xz
-# Source0-md5:	b988810c94997e99260a5bddb4119f55
+# Source0-md5:	95c65483cc8a0fbe6b415e83587238f7
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= 5.2.0
 BuildRequires:	Qt5DBus-devel >= 5.2.0
@@ -107,15 +107,13 @@ ctest
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-%find_lang %{kfname}5_qt --all-name --with-qm
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{kfname}5_qt.lang
+%files
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %{_bindir}/kgendesignerplugin
